@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:techathon/view/screen/event.dart';
 
 import '../../widgets/button.dart';
 import '../../widgets/input.dart';
@@ -36,6 +39,7 @@ class SignUp extends StatelessWidget {
                           color: Color(
                             0xFF233C7B,
                           ),
+                          fontWeight: FontWeight.w500,
                           fontSize: 28.sp),
                     ),
                     SizedBox(
@@ -56,6 +60,32 @@ class SignUp extends StatelessWidget {
                       height: 10.h,
                     ),
                     textInput(controller: passwordController, hint: "Password"),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.to(EventScreen());
+                          },
+                          child: RichText(
+                              text: TextSpan(
+                                  children: <TextSpan>[
+                                TextSpan(
+                                    text: ' Log In',
+                                    style: TextStyle(
+                                        color: Colors.blueAccent, fontSize: 18))
+                              ],
+                                  text: 'Already have an account? ',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                      fontSize: 16.sp))),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
