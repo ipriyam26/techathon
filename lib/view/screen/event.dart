@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:techathon/controller/event_controller.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class EventScreen extends StatelessWidget {
+  const EventScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
