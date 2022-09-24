@@ -39,6 +39,8 @@ dependencies:
   flutter_screenutil: ^5.5.4
   get: ^4.6.5
   google_fonts: ^3.0.1
+  intl: ^0.17.0
+  cached_network_image: ^3.2.2
 
 dev_dependencies:
   flutter_test:
