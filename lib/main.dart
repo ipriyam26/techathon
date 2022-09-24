@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'package:techathon/view/screen/event.dart';
+import 'package:techathon/view/screen/register.dart';
 
 
 void main() {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
              
               primarySwatch: Colors.blue,
             ),
-            home: EventScreen()
+            home: const RegisterScreen()
           );
 
         });
