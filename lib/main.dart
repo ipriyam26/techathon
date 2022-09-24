@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:techathon/view/screen/authentication/sign_up.dart';
 import 'package:techathon/view/screen/home.dart';
 
 void main() {
@@ -19,18 +20,12 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, a) {
           return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
-            theme: ThemeData(
-             
-              primarySwatch: Colors.blue,
-            ),
-            home: HomeScreen()
-          );
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              home: SignUp());
         });
   }
 }
-
-
-
-
