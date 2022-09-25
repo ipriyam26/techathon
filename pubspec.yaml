@@ -42,7 +42,10 @@ dependencies:
   intl: ^0.17.0
 
   cached_network_image: ^3.2.2
+
+
   image_picker: ^0.8.5+3
+
   carousel_slider: ^4.1.1
 
 dev_dependencies:
