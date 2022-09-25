@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +19,7 @@ class Upcoming extends StatelessWidget {
                   height: 162.h,
                   width: 250.w,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         fit: BoxFit.fill,
                         image: NetworkImage(
                             "https://source.unsplash.com/random/300×300"),
@@ -31,6 +30,12 @@ class Upcoming extends StatelessWidget {
                     top: 18.h,
                     left: 180.w,
                     child: Container(
+                      height: 60.h,
+                      width: 60.h,
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.6),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.sp))),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -46,12 +51,6 @@ class Upcoming extends StatelessWidget {
                           )
                         ],
                       ),
-                      height: 60.h,
-                      width: 60.h,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.6),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(15.sp))),
                     ))
               ],
             )),
