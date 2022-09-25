@@ -1,12 +1,14 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:techathon/controller/education_controller.dart';
 import 'package:techathon/controller/register_controller.dart';
-import 'package:techathon/model/register.dart';
-import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
+import 'package:techathon/view/widget/register/apply_widget.dart';
+import 'package:techathon/view/widget/register/drop_down_education.dart';
+import 'package:techathon/view/widget/register/image_picker.dart';
+import 'package:techathon/view/widget/register/label_field.dart';
+import 'package:techathon/view/widget/register/personal_info.dart';
+import 'package:techathon/view/widget/register/top_bar.dart';
 
 class RegisterScreen extends StatelessWidget {
   // const RegisterScreen({Key? key}) : super(key: key);
@@ -15,533 +17,56 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const TopAppBar(),
-              // Text("data")
-              Container(
-                margin: EdgeInsets.only(top: 23.h, left: 15.w, right: 15.w),
-                child:
-                    Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Container(
-                      // margin: EdgeInsets.symmetric(horizontal: 130.w),
-                      width: 375.w,
-                      // color: Colors.pink,
-                      alignment: Alignment.center,
-                      child: ImagePicker(registerController: registerController)),
-                  SizedBox(
-                    height: 25.h,
-                  ),
-                  const ApplyWithWidget(),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  PersonalInfo(registerController: registerController)
-                ]),
-              )
-            ],
-          ),
-        ));
-  }
-}
-
-class TopAppBar extends StatelessWidget {
-  const TopAppBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 375.w,
-      height: 108.h,
-      padding: EdgeInsets.only(top: 20.h),
-      alignment: Alignment.centerLeft,
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-        image: AssetImage("assets/bg.png"),
-        fit: BoxFit.cover,
-      )),
-      child: Row(
-        children: [
-          IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: Colors.white,
-                size: 24.sp,
-              )),
-          Text(
-            "Register",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 27.sp,
-              fontWeight: FontWeight.w700,
+        body: ListView(
+      children: [
+        const TopAppBar(),
+        // Text("data")
+        Container(
+          margin: EdgeInsets.only(top: 23.h, left: 15.w, right: 15.w),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+                // margin: EdgeInsets.symmetric(horizontal: 130.w),
+                width: 375.w,
+                // color: Colors.pink,
+                alignment: Alignment.center,
+                child: ImagePicker(registerController: registerController)),
+            SizedBox(
+              height: 25.h,
             ),
-          ),
-        ],
-      ),
-    );
+            const ApplyWithWidget(),
+            SizedBox(
+              height: 15.h,
+            ),
+            PersonalInfo(registerController: registerController),
+            EducationInfo(registerController: registerController)
+          ]),
+        )
+      ],
+    ));
   }
 }
 
-class PersonalInfo extends StatelessWidget {
-  const PersonalInfo({
+class EducationInfo extends StatelessWidget {
+   EducationInfo({
     Key? key,
     required this.registerController,
   }) : super(key: key);
   final RegisterController registerController;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Personal Info",
-          style: TextStyle(
-              fontFamily: GoogleFonts.inter().fontFamily,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1,
-              color: const Color(0xff233C7B)),
-        ),
-        GetBuilder<RegisterController>(
-          init: RegisterController(),
-          initState: (_) {},
-          builder: (controller) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                LabelField(controller: controller.name, label: "Name"),
-                LabelField(
-                    controller: controller.phoneNumber, label: "Phone Number"),
-                LabelField(controller: controller.email, label: "Email"),
-                Row(
-                  children: [
-                    DropDownMenuCustomized(
-                        controller: controller, label: "Gender"),
-                    DropDownMenuCustomizedAge(
-                        controller: controller, label: "Age")
-                  ],
-                ),
-              ],
-            );
-          },
-        )
-      ],
-    );
-  }
-}
-
-class DropDownMenuCustomizedAge extends StatelessWidget {
-  const DropDownMenuCustomizedAge({
-    Key? key,
-    required this.controller,
-    required this.label,
-  }) : super(key: key);
-  final RegisterController controller;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    List<int> age = List<int>.generate(80, (i) => 16 + i);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 14.h,
-        ),
-        SizedBox(
-          height: 21.h,
-          child: Text(
-            label,
-            style: TextStyle(
-              fontFamily: GoogleFonts.raleway().fontFamily,
-              fontWeight: FontWeight.w600,
-              fontSize: 14.sp,
-              color: const Color(0xff888888),
-              // height: 21.sp,
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        Container(
-          height: 50.h,
-          width: 154.w,
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13.r),
-              border: Border.all(color: Color(0xffEEEEEE), width: 1.5.w)),
-          child: DropdownButton(
-            // Initial Value
-            value: controller.age.value,
-            underline: Container(),
-            isDense: true,
-            isExpanded: true,
-            // style: TextStyle(backgroundColor: Colors.yellow),
-            // Down Arrow Icon
-            icon: const Icon(Icons.keyboard_arrow_down),
-
-            // Array list of items
-            items: age.map((int items) {
-              return DropdownMenuItem(
-                value: items,
-                child: Text(
-                  items.toString(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 13.sp),
-                ),
-              );
-            }).toList(),
-            // After selecting the desired option,it will
-            // change button value to selected value
-            onChanged: (int? newValue) {
-              controller.age.value = newValue!;
-              controller.refresh();
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class DropDownMenuCustomized extends StatelessWidget {
-  const DropDownMenuCustomized({
-    Key? key,
-    required this.controller,
-    required this.label,
-  }) : super(key: key);
-  final RegisterController controller;
-  final String label;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 14.h,
-        ),
-        SizedBox(
-          height: 21.h,
-          child: Text(
-            label,
-            style: TextStyle(
-              fontFamily: GoogleFonts.raleway().fontFamily,
-              fontWeight: FontWeight.w600,
-              fontSize: 14.sp,
-              color: const Color(0xff888888),
-              // height: 21.sp,
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        Container(
-          height: 50.h,
-          width: 154.w,
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13.r),
-              border: Border.all(color: Color(0xffEEEEEE), width: 1.5.w)),
-          child: DropdownButton(
-            // Initial Value
-            value: controller.gender,
-            underline: Container(),
-            isDense: true,
-            isExpanded: true,
-            // style: TextStyle(backgroundColor: Colors.yellow),
-            // Down Arrow Icon
-            icon: const Icon(Icons.keyboard_arrow_down),
-
-            // Array list of items
-            items: Gender.values.map((Gender items) {
-              return DropdownMenuItem(
-                value: items,
-                child: Text(
-                  items.name,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 13.sp),
-                ),
-              );
-            }).toList(),
-            // After selecting the desired option,it will
-            // change button value to selected value
-            onChanged: (Gender? newValue) {
-              controller.gender = newValue!;
-              controller.refresh();
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class LabelField extends StatelessWidget {
-  const LabelField({
-    Key? key,
-    required this.controller,
-    required this.label,
-  }) : super(key: key);
-  final RxString controller;
-  final String label;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 14.h,
-        ),
-        SizedBox(
-          height: 21.h,
-          child: Text(
-            label,
-            style: TextStyle(
-              fontFamily: GoogleFonts.raleway().fontFamily,
-              fontWeight: FontWeight.w600,
-              fontSize: 14.sp,
-              color: const Color(0xff888888),
-              // height: 21.sp,
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        TextFormField(
-          initialValue: controller.value,
-          style: TextStyle(
-              fontFamily: GoogleFonts.inter().fontFamily,
-              fontSize: 13.sp,
-              fontWeight: FontWeight.w400,
-              color: Colors.black),
-          onChanged: (value) {
-            controller.value = value;
-            controller.refresh();
-          },
-          cursorColor: Colors.black,
-          decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: const BorderSide(
-                width: 2,
-                color: Color(0xffEEEEEE),
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: const BorderSide(
-                width: 2,
-                color: Color.fromARGB(255, 62, 62, 62),
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: const BorderSide(
-                color: Color(0xffEEEEEE),
-              ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class ApplyWithWidget extends StatelessWidget {
-  const ApplyWithWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<RegisterController>(
-
-      init: RegisterController(),
-      initState: (_) {},
-      builder: (controller) {
-        return Container(
-          height: 70.h,
-          // color: Colors.amber,
-          margin: EdgeInsets.only(left: 20.h),
-          child: GridView(
-            physics: const NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 5,
-                crossAxisSpacing: 0,
-                mainAxisSpacing: 0),
-            children: ApplyingWith.values.map((e) {
-              return RadioTile(
-                e: e,
-                controller: controller,
-              );
-            }).toList(),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class RadioTile extends StatelessWidget {
-  const RadioTile({
-    Key? key,
-    required this.e,
-    required this.controller,
-  }) : super(key: key);
-  final ApplyingWith e;
-  final RegisterController controller;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Radio(
-          // fillColor: MaterialStateProperty.resolveWith((states)
-          value: e.name,
-          groupValue: controller.applyingWith.name,
-          onChanged: (value) {
-            controller.applyingWith = e;
-            controller.refresh();
-          },
-        ),
-        Text(
-          toBeginningOfSentenceCase(e.name.splitMapJoin(
-            RegExp(r'[A-Z]'),
-            onMatch: (m) => ' ${m.group(0)}',
-            onNonMatch: (n) => n,
-          ))!,
-          style: TextStyle(
-              fontFamily: GoogleFonts.raleway().fontFamily,
-              fontWeight: FontWeight.w600,
-              fontSize: 14.sp,
-              color: const Color(0xff888888)),
-        ),
-      ],
-    );
-  }
-}
-
-class ImagePicker extends StatelessWidget {
-  const ImagePicker({
-    Key? key,
-    required this.registerController,
-  }) : super(key: key);
-
-  final RegisterController registerController;
-  void showModal(context) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          color: const Color.fromARGB(168, 158, 158, 158),
-          height: 70.h,
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                TextButton.icon(
-                    style: TextButton.styleFrom(backgroundColor: Colors.grey),
-                    onPressed: () {
-                      registerController.getFromCamera();
-                    },
-                    icon: const Icon(
-                      Icons.camera,
-                      color: Colors.white,
-                    ),
-                    label: const Text(
-                      "Camera",
-                      style: TextStyle(color: Colors.white),
-                    )),
-                TextButton.icon(
-                    style: TextButton.styleFrom(backgroundColor: Colors.grey),
-                    onPressed: () => registerController.getFromGallery(),
-                    icon: const Icon(
-                      Icons.image,
-                      color: Colors.white,
-                    ),
-                    label: const Text(
-                      "Gallery",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
+  EducationController educationController = Get.put(EducationController());
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          ClipOval(
-            child: Stack(
-              children: [
-                registerController.imagePath.value != ""
-                    ? Image.file(
-                        File(registerController.imagePath.value),
-                        width: 375.w,
-                        height: 200.h,
-                        fit: BoxFit.cover,
-                      )
-                    : Image.asset(
-                        'assets/signup.png',
-                        height: 94.h,
-                        width: 94.w,
-                        fit: BoxFit.cover,
-                      ),
-                Container(
-                  height: 94.h,
-                  width: 94.w,
-                  color: const Color.fromARGB(151, 94, 92, 92),
-                  alignment: Alignment.center,
-                  child: IconButton(
-                    onPressed: () {
-                      showModal(context);
-                    },
-                    icon: Icon(
-                      Icons.edit_outlined,
-                      color: Colors.white,
-                      size: 30.sp,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 11.h,
-          ),
-          Text("Upload your pic",
-              style: TextStyle(
-                  fontFamily: GoogleFonts.raleway().fontFamily,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14.sp,
-                  color: const Color(0xff888888)
-// height: 21.h,
-                  )),
-        ],
-      ),
+child: Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+SizedBox(height: 18.h,),
+const Label(label: "Education"),
+ DropDownMenuCustomizedEducation(controller: educationController, label: "Education Level"),
+ LabelField(controller: educationController.university, label: "University")
+]),
     );
   }
 }
+
+
