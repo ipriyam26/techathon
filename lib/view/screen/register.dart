@@ -15,64 +15,76 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            child: Column(
-      children: [
-        Container(
-          width: 375.w,
-          height: 108.h,
-          padding: EdgeInsets.only(top: 20.h),
-          alignment: Alignment.centerLeft,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage("assets/bg.png"),
-            fit: BoxFit.cover,
-          )),
-          child: Row(
+        body: SingleChildScrollView(
+          child: Column(
             children: [
-              IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: Colors.white,
-                    size: 24.sp,
-                  )),
-              Text(
-                "Register",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 27.sp,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              const TopAppBar(),
+              // Text("data")
+              Container(
+                margin: EdgeInsets.only(top: 23.h, left: 15.w, right: 15.w),
+                child:
+                    Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Container(
+                      // margin: EdgeInsets.symmetric(horizontal: 130.w),
+                      width: 375.w,
+                      // color: Colors.pink,
+                      alignment: Alignment.center,
+                      child: ImagePicker(registerController: registerController)),
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  const ApplyWithWidget(),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  PersonalInfo(registerController: registerController)
+                ]),
+              )
             ],
           ),
-        ),
-        // Text("data")
-        Container(
-          margin: EdgeInsets.only(top: 23.h, left: 15.w, right: 15.w),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(
-                // margin: EdgeInsets.symmetric(horizontal: 130.w),
-                width: 375.w,
-                // color: Colors.pink,
-                alignment: Alignment.center,
-                child: ImagePicker(registerController: registerController)),
-            SizedBox(
-              height: 25.h,
+        ));
+  }
+}
+
+class TopAppBar extends StatelessWidget {
+  const TopAppBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 375.w,
+      height: 108.h,
+      padding: EdgeInsets.only(top: 20.h),
+      alignment: Alignment.centerLeft,
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage("assets/bg.png"),
+        fit: BoxFit.cover,
+      )),
+      child: Row(
+        children: [
+          IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_rounded,
+                color: Colors.white,
+                size: 24.sp,
+              )),
+          Text(
+            "Register",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 27.sp,
+              fontWeight: FontWeight.w700,
             ),
-            const ApplyWithWidget(),
-            SizedBox(
-              height: 15.h,
-            ),
-            PersonalInfo(registerController: registerController)
-          ]),
-        )
-      ],
-    )));
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -101,14 +113,180 @@ class PersonalInfo extends StatelessWidget {
           initState: (_) {},
           builder: (controller) {
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 LabelField(controller: controller.name, label: "Name"),
-                LabelField(controller: controller.phoneNumber, label: "Phone Number"),
+                LabelField(
+                    controller: controller.phoneNumber, label: "Phone Number"),
                 LabelField(controller: controller.email, label: "Email"),
+                Row(
+                  children: [
+                    DropDownMenuCustomized(
+                        controller: controller, label: "Gender"),
+                    DropDownMenuCustomizedAge(
+                        controller: controller, label: "Age")
+                  ],
+                ),
               ],
             );
           },
         )
+      ],
+    );
+  }
+}
+
+class DropDownMenuCustomizedAge extends StatelessWidget {
+  const DropDownMenuCustomizedAge({
+    Key? key,
+    required this.controller,
+    required this.label,
+  }) : super(key: key);
+  final RegisterController controller;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    List<int> age = List<int>.generate(80, (i) => 16 + i);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 14.h,
+        ),
+        SizedBox(
+          height: 21.h,
+          child: Text(
+            label,
+            style: TextStyle(
+              fontFamily: GoogleFonts.raleway().fontFamily,
+              fontWeight: FontWeight.w600,
+              fontSize: 14.sp,
+              color: const Color(0xff888888),
+              // height: 21.sp,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 5.h,
+        ),
+        Container(
+          height: 50.h,
+          width: 154.w,
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13.r),
+              border: Border.all(color: Color(0xffEEEEEE), width: 1.5.w)),
+          child: DropdownButton(
+            // Initial Value
+            value: controller.age.value,
+            underline: Container(),
+            isDense: true,
+            isExpanded: true,
+            // style: TextStyle(backgroundColor: Colors.yellow),
+            // Down Arrow Icon
+            icon: const Icon(Icons.keyboard_arrow_down),
+
+            // Array list of items
+            items: age.map((int items) {
+              return DropdownMenuItem(
+                value: items,
+                child: Text(
+                  items.toString(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: GoogleFonts.inter().fontFamily,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 13.sp),
+                ),
+              );
+            }).toList(),
+            // After selecting the desired option,it will
+            // change button value to selected value
+            onChanged: (int? newValue) {
+              controller.age.value = newValue!;
+              controller.refresh();
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DropDownMenuCustomized extends StatelessWidget {
+  const DropDownMenuCustomized({
+    Key? key,
+    required this.controller,
+    required this.label,
+  }) : super(key: key);
+  final RegisterController controller;
+  final String label;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 14.h,
+        ),
+        SizedBox(
+          height: 21.h,
+          child: Text(
+            label,
+            style: TextStyle(
+              fontFamily: GoogleFonts.raleway().fontFamily,
+              fontWeight: FontWeight.w600,
+              fontSize: 14.sp,
+              color: const Color(0xff888888),
+              // height: 21.sp,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 5.h,
+        ),
+        Container(
+          height: 50.h,
+          width: 154.w,
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13.r),
+              border: Border.all(color: Color(0xffEEEEEE), width: 1.5.w)),
+          child: DropdownButton(
+            // Initial Value
+            value: controller.gender,
+            underline: Container(),
+            isDense: true,
+            isExpanded: true,
+            // style: TextStyle(backgroundColor: Colors.yellow),
+            // Down Arrow Icon
+            icon: const Icon(Icons.keyboard_arrow_down),
+
+            // Array list of items
+            items: Gender.values.map((Gender items) {
+              return DropdownMenuItem(
+                value: items,
+                child: Text(
+                  items.name,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: GoogleFonts.inter().fontFamily,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 13.sp),
+                ),
+              );
+            }).toList(),
+            // After selecting the desired option,it will
+            // change button value to selected value
+            onChanged: (Gender? newValue) {
+              controller.gender = newValue!;
+              controller.refresh();
+            },
+          ),
+        ),
       ],
     );
   }
@@ -194,6 +372,7 @@ class ApplyWithWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RegisterController>(
+
       init: RegisterController(),
       initState: (_) {},
       builder: (controller) {
@@ -202,6 +381,7 @@ class ApplyWithWidget extends StatelessWidget {
           // color: Colors.amber,
           margin: EdgeInsets.only(left: 20.h),
           child: GridView(
+            physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

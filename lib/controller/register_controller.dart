@@ -13,7 +13,7 @@ class RegisterController extends GetxController {
   RxString name = "".obs;
   RxString phoneNumber = "".obs;
   RxString email = "".obs;
-  RxInt age = 0.obs;
+  RxInt age = 18.obs;
   RxString imageUrl = "".obs;
   ApplyingWith applyingWith = ApplyingWith.solo;
   Gender gender = Gender.male;
