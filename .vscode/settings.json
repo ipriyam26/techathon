@@ -1,3 +1,13 @@
 {
+
   "cSpell.words": ["Btech", "Hackathon", "techathon"]
+
+
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true,
 }
+
+  "cSpell.words": ["techathon"]
+
+}
+
