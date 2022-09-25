@@ -10,7 +10,6 @@ import 'package:techathon/view/widget/register/drop_down_education.dart';
 import 'package:techathon/view/widget/register/image_picker.dart';
 import 'package:techathon/view/widget/register/label_field.dart';
 import 'package:techathon/view/widget/register/personal_info.dart';
-import 'package:techathon/view/widget/register/radio_tile.dart';
 import 'package:techathon/view/widget/register/top_bar.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -23,7 +22,7 @@ class RegisterScreen extends StatelessWidget {
 
         body: Column(
           children: [
-                    const TopAppBar(),
+                    const TopAppBar(title: "Register",),
 
             Expanded(
 // height: 700.h,
@@ -122,7 +121,7 @@ class TrackInfo extends StatelessWidget {
           ,SizedBox(
               height: 13.h,
             ), 
-            CheckBoxLabel(label: "How many years of experience you have in Btech")
+            const CheckBoxLabel(label: "How many years of experience you have in Btech")
           ],
         );
       },
