@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:techathon/widgets/event_container.dart';
 
 import 'package:techathon/view/screen/home.dart';
+import 'package:techathon/view/widget/home/upcoming.dart';
+import 'package:techathon/view/widget/home/voucher.dart';
 
 void main() {
   runApp(const MyApp());
