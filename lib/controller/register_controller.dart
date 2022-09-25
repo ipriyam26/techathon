@@ -55,6 +55,11 @@ class RegisterController extends GetxController {
     update();
   }
 
+  updateApplyWith(ApplyingWith applyingWith) {
+    this.applyingWith = applyingWith;
+    refresh();
+  }
+
   uploadToImgur() async {
     final pngByteData = await File(imagePath.value).readAsBytes();
     var headers = {'Authorization': 'Client-ID {{a83359f69b06947}}'};
