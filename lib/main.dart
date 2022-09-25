@@ -25,49 +25,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: Container(
-                  color: Colors.black,
-                  child: CarouselSlider(
-                    options: CarouselOptions(aspectRatio: 1.2),
-                    items: const [
-                      EventContainer(
-                        date: '2022-09-29',
-                        name: 'Tech Fest',
-                        paid: true,
-                        teamCategory: 'Team & Solo',
-                        location: 'Bennett University',
-                        participantLength: 20,
-                        img_url: 'https://i.imgur.com/CzXTtJV.jpg',
-                      ),
-                      EventContainer(
-                        date: '2022-09-29',
-                        name: 'Tech Fest',
-                        paid: true,
-                        teamCategory: 'Team & Solo',
-                        location: 'Bennett University',
-                        participantLength: 20,
-                        img_url: 'https://i.imgur.com/CzXTtJV.jpg',
-                      ),
-                      EventContainer(
-                        date: '2022-09-29',
-                        name: 'Tech Fest',
-                        paid: true,
-                        teamCategory: 'Team & Solo',
-                        location: 'Bennett University',
-                        participantLength: 20,
-                        img_url: 'https://i.imgur.com/CzXTtJV.jpg',
-                      ),
-                      EventContainer(
-                        date: '2022-09-29',
-                        name: 'Tech Fest',
-                        paid: true,
-                        teamCategory: 'Team & Solo',
-                        location: 'Bennett University',
-                        participantLength: 20,
-                        img_url: 'https://i.imgur.com/CzXTtJV.jpg',
-                      )
-                    ],
-                  )));
+              home: Container());
         });
   }
 }
