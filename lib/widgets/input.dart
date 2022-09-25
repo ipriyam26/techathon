@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +16,7 @@ Widget textInput({controller, hint}) {
       decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hint,
-          hintStyle: TextStyle(fontSize: 15.16.sp, color: Color(0xFFABABAB))),
+          hintStyle: TextStyle(fontSize: 15.16.sp, color: const Color(0xFFABABAB))),
     ),
   );
 }

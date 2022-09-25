@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:techathon/view/screen/event.dart';
 
 import '../../widgets/button.dart';
@@ -21,7 +20,7 @@ class SignUp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/signup.png'),
                         fit: BoxFit.contain)),
@@ -36,7 +35,7 @@ class SignUp extends StatelessWidget {
                     Text(
                       'Sign-up',
                       style: TextStyle(
-                          color: Color(
+                          color: const Color(
                             0xFF233C7B,
                           ),
                           fontWeight: FontWeight.w500,
@@ -68,11 +67,11 @@ class SignUp extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Get.to(EventScreen());
+                            Get.to(const EventScreen());
                           },
                           child: RichText(
                               text: TextSpan(
-                                  children: <TextSpan>[
+                                  children: const <TextSpan>[
                                 TextSpan(
                                     text: ' Log In',
                                     style: TextStyle(
