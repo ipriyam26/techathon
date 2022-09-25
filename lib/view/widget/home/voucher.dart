@@ -10,6 +10,20 @@ class Voucher extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
+          width: 315.w,
+          height: 120.h,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  //
+                  const Color(0XFF439DFE).withOpacity(0.8),
+                  const Color(0xFFF687FF).withOpacity(0.8),
+                ],
+              ),
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(20.sp))),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
@@ -17,10 +31,15 @@ class Voucher extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Container(
+                    width: 50.w,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(15.sp))),
+                    height: 50.h,
                     child: Container(
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.card_giftcard,
                           color: Color(0xffF27484),
@@ -35,11 +54,6 @@ class Voucher extends StatelessWidget {
                         // ),
                       ),
                     ),
-                    width: 50.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(15.sp))),
-                    height: 50.h,
                   ),
                 ),
                 SizedBox(
@@ -74,20 +88,6 @@ class Voucher extends StatelessWidget {
               ],
             ),
           ),
-          width: 315.w,
-          height: 120.h,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  //
-                  Color(0XFF439DFE).withOpacity(0.8),
-                  Color(0xFFF687FF).withOpacity(0.8),
-                ],
-              ),
-              color: Colors.red,
-              borderRadius: BorderRadius.all(Radius.circular(20.sp))),
         ),
       ),
     );
