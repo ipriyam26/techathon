@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import 'package:techathon/widgets/event_container.dart';
 
 import 'package:techathon/view/screen/home.dart';
-import 'package:techathon/view/widget/home/upcoming.dart';
-import 'package:techathon/view/widget/home/voucher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: const HomeScreen());
+              home: HomeScreen());
         });
   }
 }
