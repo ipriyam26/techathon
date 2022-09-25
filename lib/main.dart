@@ -5,6 +5,7 @@ import 'package:techathon/view/screen/home.dart';
 import 'package:techathon/view/widget/home/upcoming.dart';
 import 'package:techathon/view/widget/home/voucher.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -21,12 +22,16 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, a) {
           return GetMaterialApp(
+
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: const Upcoming());
+              
+
+              home: const HomeScreen());
+
         });
   }
 }
