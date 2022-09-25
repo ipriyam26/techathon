@@ -13,7 +13,7 @@ class EventContainer extends StatefulWidget {
       required this.participantLength,
       required this.img_url});
   final String name;
-  final String date;
+  final DateTime date;
   final String location;
   final bool paid;
   final String img_url;
@@ -46,8 +46,7 @@ class _EventContainerState extends State<EventContainer> {
   int? plength;
   @override
   void initState() {
-    DateTime parseDt = DateTime.parse(widget.date);
-    formattedDate = DateFormat('d,MMMM,yyyy').format(parseDt);
+    formattedDate = DateFormat('d,MMMM,yyyy').format(widget.date);
     plength = widget.participantLength - 5;
     super.initState();
   }
@@ -62,8 +61,8 @@ class _EventContainerState extends State<EventContainer> {
         borderRadius: BorderRadius.circular(16),
       ),
       child: SizedBox(
-        height: 367.h,
-        width: 253.w,
+        height: 287.h,
+        width: 183.w,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,8 +70,8 @@ class _EventContainerState extends State<EventContainer> {
             Stack(
               children: [
                 Container(
-                  height: 200.h,
-                  width: 253.w,
+                  height: 158.h,
+                  width: 182.w,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
@@ -84,8 +83,8 @@ class _EventContainerState extends State<EventContainer> {
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Container(
-                        height: 30.h,
-                        width: 75.w,
+                        height: 17.h,
+                        width: 50.w,
                         decoration: BoxDecoration(
                             color: const Color(0xff233C7B),
                             borderRadius: BorderRadius.circular(18.sp)),
@@ -95,7 +94,7 @@ class _EventContainerState extends State<EventContainer> {
                           style: Theme.of(context)
                               .textTheme
                               .subtitle2!
-                              .copyWith(color: Colors.white),
+                              .copyWith(color: Colors.white, fontSize: 8.sp),
                         )),
                       ),
                     ),
@@ -108,8 +107,8 @@ class _EventContainerState extends State<EventContainer> {
                           child: Align(
                             alignment: Alignment.bottomRight,
                             child: Container(
-                              height: 30.h,
-                              width: 65.w,
+                              height: 17.h,
+                              width: 50.w,
                               decoration: BoxDecoration(
                                   color: const Color(0xff233C7B),
                                   borderRadius: BorderRadius.circular(18.sp)),
@@ -117,8 +116,10 @@ class _EventContainerState extends State<EventContainer> {
                                   child: Text("Paid",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1!
-                                          .copyWith(color: Colors.white))),
+                                          .subtitle2!
+                                          .copyWith(
+                                              color: Colors.white,
+                                              fontSize: 8.sp))),
                             ),
                           ),
                         ),
@@ -141,7 +142,7 @@ class _EventContainerState extends State<EventContainer> {
                       children: [
                         Text(
                           formattedDate as String,
-                          style: Theme.of(context).textTheme.subtitle1,
+                          style: Theme.of(context).textTheme.subtitle2,
                         ),
                         SizedBox(
                           height: 5.h,
@@ -150,7 +151,7 @@ class _EventContainerState extends State<EventContainer> {
                           widget.name,
                           style: Theme.of(context)
                               .textTheme
-                              .headline5!
+                              .headline6!
                               .copyWith(fontWeight: FontWeight.w700),
                         ),
                         SizedBox(
@@ -169,14 +170,15 @@ class _EventContainerState extends State<EventContainer> {
                           ],
                         ),
                         SizedBox(
-                          height: 40.h,
+                          height: 10.h,
                         ),
                         Row(
                           children: [
                             Expanded(
                               child: Stack(
                                 children: [
-                                  const CircleAvatar(
+                                  CircleAvatar(
+                                    radius: 12.sp,
                                     backgroundColor: Colors.purpleAccent,
                                   ),
                                   for (double i = 0; i <= 5; i++)
@@ -184,10 +186,12 @@ class _EventContainerState extends State<EventContainer> {
                                       left: 20 * i,
                                       child: i != 5
                                           ? CircleAvatar(
+                                              radius: 12.sp,
                                               backgroundImage: NetworkImage(
                                                   usr_profile_list[i as int]),
                                             )
                                           : CircleAvatar(
+                                              radius: 12.sp,
                                               backgroundColor:
                                                   const Color(0xffC5D5FF),
                                               child: Center(
@@ -197,6 +201,7 @@ class _EventContainerState extends State<EventContainer> {
                                                       .textTheme
                                                       .subtitle1!
                                                       .copyWith(
+                                                          fontSize: 10.sp,
                                                           fontWeight:
                                                               FontWeight.w700,
                                                           color: const Color(
@@ -214,7 +219,7 @@ class _EventContainerState extends State<EventContainer> {
                                     foregroundColor:
                                         MaterialStateProperty.all(Colors.black),
                                     minimumSize: MaterialStateProperty.all(
-                                        Size(100.w, 40.h)),
+                                        Size(71.w, 21.h)),
                                     backgroundColor: MaterialStateProperty.all(
                                         const Color(0xFFC5D5FF))),
                                 onPressed: (() {}),

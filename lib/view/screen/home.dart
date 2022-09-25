@@ -1,9 +1,21 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:techathon/model/event.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../../controller/event_controller.dart';
+import '../../widgets/event_container.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  EventController eventController = Get.put(EventController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +111,41 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 10.h,
+          ),
+          CarouselSlider.builder(
+              itemCount: eventController.upcomingEvent.length,
+              itemBuilder: ((context, index, realIndex) {
+                return EventContainer(
+                    name: eventController.upcomingEvent[index].title,
+                    date: eventController.upcomingEvent[index].eventDate,
+                    location: eventController.upcomingEvent[index].location,
+                    paid: eventController.upcomingEvent[index].cost > 0
+                        ? true
+                        : false,
+                    teamCategory:
+                        eventController.upcomingEvent[index].maximumMembers == 1
+                            ? "Solo"
+                            : "Solo & Team",
+                    participantLength:
+                        eventController.upcomingEvent[index].availableSeats,
+                    img_url: eventController.upcomingEvent[index].imageUrl);
+              }),
+              options: CarouselOptions(
+                  aspectRatio: 1.5,
+                  viewportFraction: 0.6,
+                  enlargeCenterPage: false))
+          // CarouselSlider(items: [
+          //   EventContainer(
+          //       name: eventController.upcomingEvent[0].title,
+          //       date: "2020-09-10",
+          //       location: "Bennett University",
+          //       paid: true,
+          //       teamCategory: "Solo & Team",
+          //       participantLength: 20,
+          //       img_url: "assets/home_banner.png")
+          // ], options: CarouselOptions(aspectRatio: 1.6))
         ],
       ),
     );
