@@ -40,7 +40,12 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^3.0.1
   intl: ^0.17.0
+<<<<<<< HEAD
   cached_network_image: ^3.2.2
+=======
+
+  cached_network_image: ^3.2.0
+>>>>>>> 7d95cda63183fd5cd82d6998dbc6fd58c7f6ccf2
   carousel_slider: ^4.1.1
 
 dev_dependencies:

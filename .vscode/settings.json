@@ -1,4 +1,15 @@
 {
+<<<<<<< HEAD
     "editor.defaultFormatter": "Dart-Code.dart-code",
     "editor.formatOnSave": true,
 }
+=======
+
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true,
+}
+
+  "cSpell.words": ["techathon"]
+}
+
+>>>>>>> 7d95cda63183fd5cd82d6998dbc6fd58c7f6ccf2

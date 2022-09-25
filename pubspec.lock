@@ -21,21 +21,21 @@ packages:
       name: cached_network_image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.2"
+    version: "3.2.1"
   cached_network_image_platform_interface:
     dependency: transitive
     description:
       name: cached_network_image_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "1.0.0"
   cached_network_image_web:
     dependency: transitive
     description:
       name: cached_network_image_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.1"
   carousel_slider:
     dependency: "direct main"
     description:
@@ -309,14 +309,22 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.9.0"
+=======
+    version: "1.9.1"
+>>>>>>> 7d95cda63183fd5cd82d6998dbc6fd58c7f6ccf2
   sqflite:
     dependency: transitive
     description:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.1.0"
+=======
+    version: "2.0.3+1"
+>>>>>>> 7d95cda63183fd5cd82d6998dbc6fd58c7f6ccf2
   sqflite_common:
     dependency: transitive
     description:
