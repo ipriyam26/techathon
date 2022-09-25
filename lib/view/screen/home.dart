@@ -7,7 +7,7 @@ import 'package:techathon/view/widget/home/search_container.dart';
 import 'package:techathon/view/widget/home/upcoming.dart';
 import 'package:techathon/widgets/event_container.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   EventController eventController = Get.put(EventController());
