@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:techathon/view/screen/history.dart';
 import 'package:techathon/view/screen/home.dart';
 import 'package:techathon/view/widget/home/upcoming.dart';
 import 'package:techathon/view/widget/home/voucher.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: const Upcoming());
+              home: History());
         });
   }
 }
