@@ -7,10 +7,8 @@ import 'package:techathon/controller/event_controller.dart';
 
 
 import 'package:techathon/view/widget/home/search_container.dart';
-import 'package:techathon/view/widget/home/upcoming.dart';
 import 'package:techathon/widgets/event_container.dart';
 
-import '../widget/home/filter_chip.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
