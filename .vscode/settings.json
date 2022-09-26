@@ -5,9 +5,13 @@
 
     "editor.defaultFormatter": "Dart-Code.dart-code",
     "editor.formatOnSave": true,
+<<<<<<< HEAD
+    "cSpell.words": ["techathon"]
+=======
 }
 
   "cSpell.words": ["techathon"]
 
+>>>>>>> d88ea90c5b7d085b2cc59dd2bcab182ad52fb8a1
 }
 
