@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
 
             ),
-          ),
+          
           eventController.upcomingEvent.isEmpty
               ? const Center(
                   child: CircularProgressIndicator(),
@@ -177,6 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
 
       ),
-    );
+    ));
   }
 }
