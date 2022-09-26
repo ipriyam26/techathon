@@ -12,7 +12,7 @@ class CertificateController extends GetxController {
         'title': 'Certificate 1',
         'status': 0,
         'downloadLink': 'https://static8.depositphotos.com/1062042/972/v/450/depositphotos_9725775-stock-illustration-gold-detailed-certificate.jpg',
-        'domain': 'Flutter',
+        'domain': 'Web Development',
         'location': 'India',
         'completedDate': DateTime(2021, 10, 10),
         'eventImage':
@@ -22,7 +22,7 @@ class CertificateController extends GetxController {
         'title': 'Compton',
         'status': 2,
         'downloadLink': 'https://thumbs.dreamstime.com/b/certificate-achievement-18582409.jpg',
-        'domain': 'Flutter',
+        'domain': 'Deep Learning',
         'location': 'India',
         'completedDate': DateTime(2021, 10, 10),
         'eventImage':

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,6 +31,23 @@ class history_item extends StatelessWidget {
               padding: EdgeInsets.all(12.sp),
               child: Positioned(
                 child: Container(
+                  width: 350.w,
+                  height: 160.h,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset.fromDirection(
+                          -1,
+                          -2,
+                        ),
+                        blurRadius: 12,
+                        // color: Color(0xfff2f2f7)
+                        color: const Color.fromRGBO(0, 0, 0, 0.5),
+                      )
+                    ],
+                    borderRadius: BorderRadius.all(Radius.circular(10.sp)),
+                    color: Colors.grey.shade200.withOpacity(0.8),
+                  ),
                   child: Stack(
                     children: [
                       Padding(
@@ -39,7 +55,7 @@ class history_item extends StatelessWidget {
                             horizontal: 8.w, vertical: 6.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [Text("29, September,2022")],
+                          children: const [Text("29, September,2022")],
                         ),
                       ),
                       SizedBox(
@@ -54,7 +70,7 @@ class history_item extends StatelessWidget {
                               height: 94.h,
                               width: 107.w,
                               decoration: BoxDecoration(
-                                  image: DecorationImage(
+                                  image: const DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
                                           "https://source.unsplash.com/random/300×300")),
@@ -86,14 +102,14 @@ class history_item extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.location_on,
                                       color: Colors.blue,
                                     ),
                                     Text(
                                       location,
                                       style: TextStyle(
-                                          color: Color(0xFF233C7B),
+                                          color: const Color(0xFF233C7B),
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14.sp),
                                     ),
@@ -111,6 +127,12 @@ class history_item extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Container(
+                                    width: 130.w,
+                                    height: 25.h,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0Xff233C7B),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(12.sp))),
                                     child: Center(
                                       child: Text(
                                         "Collect Certificate",
@@ -120,38 +142,15 @@ class history_item extends StatelessWidget {
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ),
-                                    width: 130.w,
-                                    height: 25.h,
-                                    decoration: BoxDecoration(
-                                        color: Color(0Xff233C7B),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(12.sp))),
                                   ),
                                 ],
                               ),
                             )
-                          : SizedBox.shrink(),
+                          : const SizedBox.shrink(),
                       SizedBox(
                         height: 10.h,
                       )
                     ],
-                  ),
-                  width: 350.w,
-                  height: 160.h,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset.fromDirection(
-                          -1,
-                          -2,
-                        ),
-                        blurRadius: 12,
-                        // color: Color(0xfff2f2f7)
-                        color: const Color.fromRGBO(0, 0, 0, 0.5),
-                      )
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(10.sp)),
-                    color: Colors.grey.shade200.withOpacity(0.8),
                   ),
                 ),
               ),
@@ -162,6 +161,11 @@ class history_item extends StatelessWidget {
             left: 40.w,
             top: 4.h,
             child: Container(
+              decoration: BoxDecoration(
+                  color: Color(color),
+                  borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+              width: 62.w,
+              height: 20.h,
               child: Center(
                 child: Text(
                   "Ongoing",
@@ -171,11 +175,6 @@ class history_item extends StatelessWidget {
                       color: Colors.white),
                 ),
               ),
-              decoration: BoxDecoration(
-                  color: Color(color as int),
-                  borderRadius: BorderRadius.all(Radius.circular(8.sp))),
-              width: 62.w,
-              height: 20.h,
             ))
       ],
     );

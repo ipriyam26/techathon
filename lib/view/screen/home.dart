@@ -6,10 +6,8 @@ import 'package:techathon/controller/event_controller.dart';
 
 
 import 'package:techathon/view/widget/home/search_container.dart';
-import 'package:techathon/view/widget/home/upcoming.dart';
 import 'package:techathon/widgets/event_container.dart';
 
-import '../widget/home/filter_chip.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -123,30 +121,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            eventController.upcomingEvent.isEmpty
-                ? const Center(
-              child: CircularProgressIndicator(),
-            )
-                : CarouselSlider(
-                items: [
-                  ...eventController.upcomingEvent.map((event) {
-                    return EventContainer(event: event);
-                  }).toList(),
-                ],
-                options: CarouselOptions(
-                  height: 270.h,
-                  aspectRatio: 1.448,
-                  viewportFraction: 0.58,
-                  // enlargeCenterPage: true,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration:
-                  const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  scrollDirection: Axis.horizontal,
-                )),
-          ],
+
+          
+          eventController.upcomingEvent.isEmpty
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              :
+          CarouselSlider(items: [
+            ...eventController.upcomingEvent.map((event) {
+              return EventContainer(event: event);
+            }).toList(),
+          ], options: CarouselOptions(
+            height: 270.h,
+            aspectRatio: 1.448,
+            viewportFraction: 0.58,
+            // enlargeCenterPage: true,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            scrollDirection: Axis.horizontal,
+          )),
+          
+
 
         ),
         ],
@@ -176,6 +175,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
       ],
       ),
-    );
+    ));
   }
 }
