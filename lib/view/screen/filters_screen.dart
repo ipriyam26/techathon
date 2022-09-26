@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:techathon/model/event.dart';
+import 'package:techathon/view/screen/history.dart';
+import 'package:techathon/view/screen/home.dart';
 
+import '../../controller/filter_controller.dart';
 import '../widget/home/filter_chip.dart';
+import 'event.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
@@ -13,6 +20,8 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
+  List<String> added_item = [];
+  FilterListController filterController = Get.put(FilterListController());
   List<String> location_items = ["Online", "In Person"];
   List<String> status_items = ["Upcoming", "Open", "Ended"];
   List<String> length_items = ["1-6 Days", "2-4 Weeks", "1 month"];
@@ -30,6 +39,11 @@ class _FilterScreenState extends State<FilterScreen> {
     "Lifehacks",
     "Mobile"
   ];
+
+  void onint() {
+    print(filterController.getSelectedList());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -58,6 +72,32 @@ class _FilterScreenState extends State<FilterScreen> {
             filterlist: select_tags_items,
             filterName: "Select Tags",
           ),
+          Center(
+            child: Material(
+              elevation: 5,
+              child: GestureDetector(
+                onTap: (() {
+                  Get.to(EventScreen());
+                }),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: const Color(0xff233C7B),
+                      borderRadius: BorderRadius.circular(15)),
+                  width: 173.w,
+                  height: 53.h,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "APPLY",
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        fontSize: 17.sp,
+                        fontFamily: GoogleFonts.inter().fontFamily,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

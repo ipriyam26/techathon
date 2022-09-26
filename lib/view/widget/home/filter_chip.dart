@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:techathon/controller/filter_controller.dart';
 
 class filterChipWidget extends StatefulWidget {
   final String? chipName;
@@ -13,6 +15,8 @@ class filterChipWidget extends StatefulWidget {
 
 class _filterChipWidgetState extends State<filterChipWidget> {
   var _isSelected = false;
+  FilterListController filterController = Get.put(FilterListController());
+  List<String> added_item = <String>[];
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +35,16 @@ class _filterChipWidgetState extends State<filterChipWidget> {
         borderRadius: BorderRadius.circular(3.59.sp),
       ),
       backgroundColor: Colors.white,
-      onSelected: (isSelected) {
+      onSelected: (isSelected) async {
         setState(() {
+          // print(added_item);
+
           _isSelected = isSelected;
+
+          added_item.add(widget.chipName as String);
+          filterController.setSelectedList(added_item);
+
+          // print(filterController.getSelectedList());
         });
       },
       selectedColor: Color(0xffFE724C),
