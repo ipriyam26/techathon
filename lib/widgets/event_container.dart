@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:techathon/model/event.dart';
 
 class EventContainer extends StatelessWidget {
-   EventContainer({super.key, required this.event});
+  EventContainer({super.key, required this.event});
 
   final Event event;
 
@@ -34,7 +34,7 @@ class EventContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String name = event.title;
-    final String date =DateFormat('d,MMMM,yyyy').format(event.eventDate);
+    final String date = DateFormat('d,MMMM,yyyy').format(event.eventDate);
     final String location = event.location;
     final bool paid = event.cost != 0;
     final String imgUrl = event.imageUrl;
@@ -82,9 +82,9 @@ class EventContainer extends StatelessWidget {
                               .textTheme
                               .subtitle2!
                               .copyWith(
-                                fontSize: 10.sp,
-                                fontFamily: GoogleFonts.inter().fontFamily,
-                                color: Colors.white),
+                                  fontSize: 10.sp,
+                                  fontFamily: GoogleFonts.inter().fontFamily,
+                                  color: Colors.white),
                         )),
                       ),
                     ),
@@ -108,9 +108,10 @@ class EventContainer extends StatelessWidget {
                                           .textTheme
                                           .subtitle1!
                                           .copyWith(
-                                            fontSize: 10.sp,
-                                            fontFamily: GoogleFonts.inter().fontFamily,
-                                            color: Colors.white))),
+                                              fontSize: 10.sp,
+                                              fontFamily: GoogleFonts.inter()
+                                                  .fontFamily,
+                                              color: Colors.white))),
                             ),
                           ),
                         ),
@@ -132,13 +133,15 @@ class EventContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          formattedDate??"20,May,2021",
-                          style: Theme.of(context).textTheme.subtitle1!.copyWith(
-fontSize: 10.sp,
-fontFamily: GoogleFonts.inter().fontFamily,
-fontWeight: FontWeight.w600,
-color: const Color(0xffBFBFBF)
-                          ),
+                          formattedDate ?? "20,May,2021",
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(
+                                  fontSize: 10.sp,
+                                  fontFamily: GoogleFonts.inter().fontFamily,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xffBFBFBF)),
                         ),
                         // SizedBox(
                         //   height: 5.h,
@@ -149,9 +152,9 @@ color: const Color(0xffBFBFBF)
                               .textTheme
                               .headline5!
                               .copyWith(
-                                fontSize: 13.sp,
-                                fontFamily: GoogleFonts.inter().fontFamily,
-                                fontWeight: FontWeight.w600),
+                                  fontSize: 13.sp,
+                                  fontFamily: GoogleFonts.inter().fontFamily,
+                                  fontWeight: FontWeight.w600),
                         ),
                         // SizedBox(
                         //   height: 10.h,
@@ -160,17 +163,19 @@ color: const Color(0xffBFBFBF)
                           children: [
                             Icon(
                               Icons.location_on_outlined,
-                              size:10.sp,
+                              size: 10.sp,
                             ),
                             Text(
                               location,
-                              style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                                fontSize: 10.sp,
-                                fontFamily: GoogleFonts.inter().fontFamily,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff233C7B)
-
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1!
+                                  .copyWith(
+                                      fontSize: 10.sp,
+                                      fontFamily:
+                                          GoogleFonts.inter().fontFamily,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff233C7B)),
                             ),
                           ],
                         ),
@@ -195,22 +200,22 @@ color: const Color(0xffBFBFBF)
                                       left: 12.0 * i,
                                       child: i != 5
                                           ? CircleAvatar(
-                                            radius: 12.sp,
+                                              radius: 12.sp,
                                               backgroundImage: NetworkImage(
                                                   usr_profile_list[i]),
                                             )
                                           : CircleAvatar(
-                                            radius: 12.sp,
+                                              radius: 12.sp,
                                               backgroundColor:
                                                   const Color(0xffC5D5FF),
                                               child: Center(
                                                 child: Text(
-                                                  '''${plength??4}+''',
+                                                  '''${plength ?? 4}+''',
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .subtitle1!
                                                       .copyWith(
-                                                        fontSize: 10.sp,
+                                                          fontSize: 10.sp,
                                                           fontWeight:
                                                               FontWeight.w700,
                                                           color: const Color(
@@ -223,30 +228,29 @@ color: const Color(0xffBFBFBF)
                               ),
                             ),
 
-Material(
-  elevation: 5,
-  child:   Container(
-    decoration: BoxDecoration(
-    color: const Color(0xFFC5D5FF),
-  borderRadius: BorderRadius.circular(5)
-  
-    ),
-    width: 71.w,
-    height: 21.h,
-    alignment: Alignment.center,
-  child: Text(
-                                      "Interested",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle1!
-                                          .copyWith(
-                                            fontSize: 10.sp,
-                                            fontFamily: GoogleFonts.inter().fontFamily,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff233C7B)),
-                                    ),  
-  ),
-)
+                            Material(
+                              elevation: 5,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFC5D5FF),
+                                    borderRadius: BorderRadius.circular(5)),
+                                width: 71.w,
+                                height: 21.h,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Interested",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subtitle1!
+                                      .copyWith(
+                                          fontSize: 10.sp,
+                                          fontFamily:
+                                              GoogleFonts.inter().fontFamily,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xff233C7B)),
+                                ),
+                              ),
+                            )
 
                             // ElevatedButton(
                             //     // style: ButtonStyle(
