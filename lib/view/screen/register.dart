@@ -22,7 +22,7 @@ class RegisterScreen extends StatelessWidget {
 
         body: Column(
           children: [
-                    const TopAppBar(),
+                    const TopAppBar(title: "Register",),
 
             Expanded(
 // height: 700.h,

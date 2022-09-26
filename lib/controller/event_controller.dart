@@ -4,6 +4,7 @@ import 'package:techathon/model/event.dart';
 class EventController extends GetxController {
   List<Event> upcomingEvent = <Event>[].obs;
 
+
   @override
   void onInit() {
     List<Map<String, dynamic>> data = [

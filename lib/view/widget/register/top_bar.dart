@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,8 +5,9 @@ import 'package:get/get.dart';
 class TopAppBar extends StatelessWidget {
   const TopAppBar({
     Key? key,
+    required this.title,
   }) : super(key: key);
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +32,7 @@ class TopAppBar extends StatelessWidget {
                 size: 24.sp,
               )),
           Text(
-            "Register",
+            title,
             style: TextStyle(
               color: Colors.white,
               fontSize: 27.sp,
@@ -44,7 +44,3 @@ class TopAppBar extends StatelessWidget {
     );
   }
 }
-
-
-
-

@@ -1,10 +1,10 @@
-import 'dart:convert';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:techathon/controller/event_controller.dart';
+
 
 import 'package:techathon/view/widget/home/search_container.dart';
 import 'package:techathon/view/widget/home/upcoming.dart';
@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(18.sp)),
                                 ),
+
                               ),
                             ],
                           ),
@@ -100,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       top: 205.h, left: 30.w, child: const SearchContainer())
                 ],
               ),
+
             ),
             Column(
               children: [
@@ -146,9 +148,34 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                         )),
               ],
-            )
-          ],
-        ),
+
+            ),
+          ),
+          eventController.upcomingEvent.isEmpty
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              :
+          CarouselSlider(items: [
+            ...eventController.upcomingEvent.map((event) {
+              return EventContainer(event: event);
+            }).toList(),
+          ], options: CarouselOptions(
+            height: 270.h,
+            aspectRatio: 1.448,
+            viewportFraction: 0.58,
+            // enlargeCenterPage: true,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            scrollDirection: Axis.horizontal,
+          )),
+          
+
+        ],
+
       ),
     );
   }
