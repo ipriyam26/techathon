@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:techathon/controller/history_controller.dart';
 
 import '../widget/history/history_item.dart';
 
 class History extends StatelessWidget {
-  const History({Key? key}) : super(key: key);
+  HistoryController historyController = Get.put(HistoryController());
 
   @override
   Widget build(BuildContext context) {
@@ -48,24 +51,24 @@ class History extends StatelessWidget {
                             width: 150.w,
                           ),
                           Container(
+                            width: 40.w,
+                            height: 40.h,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
                             child: Container(
                               width: 25.w,
                               decoration: BoxDecoration(
-                                  color: Color(0xFF233C7B),
+                                  color: const Color(0xFF233C7B),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(8.sp))),
                               height: 25.h,
-                              child: Center(
+                              child: const Center(
                                 child: Icon(
                                   Icons.sort,
                                   color: Colors.white,
                                 ),
                               ),
-                            ),
-                            width: 40.w,
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
                             ),
                           )
                         ],

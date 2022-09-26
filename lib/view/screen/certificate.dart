@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:techathon/controller/certificate_controller.dart';
 import 'package:techathon/view/widget/event/date_maker.dart';
+import 'package:techathon/view/widget/history/history_item.dart';
 import 'package:techathon/view/widget/register/top_bar.dart';
 
 class CertificateScreen extends StatelessWidget {
@@ -26,21 +27,34 @@ class CertificateScreen extends StatelessWidget {
         children: [
           const TopAppBar(title: "Certificate"),
           Container(
-            margin: EdgeInsets.only(left: 12.w, top: 27.h),
-            child: Text(
-              "My Certificate",
-              style: TextStyle(
-                  letterSpacing: 1.8,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18.sp),
-            ),
-          ),
-          SizedBox(
-            height: 17.h,
-          ),
-          certificateController.certificateList.isEmpty
+            height: 690.h,
+            // color: Colors.pink,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+...certificateController.certificateList.map((certificate) {
+return history_item(isCertificate: certificate.status!=1 , color: (0xFF00C838), location: certificate.location, festName: certificate.title, festCategory: certificate.domain, festDate: certificate.completedDate);
+} ).toList(),
+
+
+
+                Container(
+          
+                  margin: EdgeInsets.only(left: 12.w,),
+                  child: Text(
+                    "My Certificate",
+                    style: TextStyle(
+                        letterSpacing: 1.8,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18.sp),
+                  ),
+                ),
+                SizedBox(
+                  height: 17.h,
+                ),
+                certificateController.certificateList.isEmpty
               ? const CircularProgressIndicator()
-              : Container(
+              : SizedBox(
                 height: 170.h,
 
                 child: ListView(scrollDirection: Axis.horizontal, children: [
@@ -68,8 +82,14 @@ class CertificateScreen extends StatelessWidget {
                         ),
                       );
                     }).toList()
-                  ]),
+                  ]
+                  
+                  ),
               )
+              ],
+          ),
+            ),
+          
         ],
       ),
     );
